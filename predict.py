@@ -19,27 +19,6 @@ vgg16 = models.vgg16(pretrained=True)
 #models = {'resnet': resnet18, 'alexnet': alexnet, 'vgg': vgg16}
 
 def load_checkpoint(filepath):
-#     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-#     checkpoint = torch.load(filepath)
-#     model = models.vgg16(pretrained=True)
-#     for param in model.parameters():
-#         param.required_grad = False
-#     model.classifier = nn.Sequential(nn.Linear(25088, 2048),
-#                           nn.ReLU(),
-#                           nn.Dropout(p=0.25),
-#                           nn.Linear(2048, 512),
-#                           nn.ReLU(),
-#                           nn.Linear(512, 102),
-#                           nn.LogSoftmax(dim=1))   
-    
-#     model.arch = checkpoint['arch']
-#     model.class_to_idx = checkpoint['class_to_idx']
-#     model.classifier = checkpoint['classifier']
-#     model.load_state_dict(checkpoint['state_dict'])
-#     optimizer.load_state_dict(checkpoint['optimizer_dict'])
-    
-#     for param in model.parameters():
-#         param.requires_grad = False
     checkpoint = torch.load(filepath)
     model = checkpoint['model']
     learning_rate = checkpoint['learning_rate']
